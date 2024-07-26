@@ -1,0 +1,40 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class GuessingGame {
+
+    public static void main(String[] args) {
+        Random random = new Random();
+        Scanner scanner = new Scanner(System.in);
+
+        int numberToGuess = random.nextInt(100) + 1;
+        int numberOfTries = 0;
+        boolean hasGuessedCorrectly = false;
+
+        System.out.println("Bienvenue au jeu de devinettes !");
+        System.out.println("Devinez un nombre entre 1 et 100 :");
+
+        while (numberOfTries < 10) {
+            System.out.print("Entrez votre devinette : ");
+            int userGuess = scanner.nextInt();
+            numberOfTries++;
+
+            if (userGuess < numberToGuess) {
+                System.out.println("Le nombre est plus grand.");
+            } else if (userGuess > numberToGuess) {
+                System.out.println("Le nombre est plus petit.");
+            } else {
+                hasGuessedCorrectly = true;
+                break;
+            }
+        }
+
+        if (hasGuessedCorrectly) {
+            System.out.println("Félicitations ! Vous avez deviné le bon nombre en " + numberOfTries + " essais.");
+        } else {
+            System.out.println("Désolé, vous avez utilisé tous vos 10 essais. Le nombre était " + numberToGuess + ".");
+        }
+
+        scanner.close();
+    }
+}
