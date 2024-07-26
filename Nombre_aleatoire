@@ -1,38 +1,38 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class GuessingGame {
+public class Jeu {
 
     public static void main(String[] args) {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
-        int numberToGuess = random.nextInt(100) + 1;
-        int numberOfTries = 0;
-        boolean hasGuessedCorrectly = false;
+        int nbrD = random.nextInt(100) + 1;
+        int nbrE = 0;
+        boolean nbrTr = false;
 
         System.out.println("Bienvenue au jeu de devinettes !");
         System.out.println("Devinez un nombre entre 1 et 100 :");
 
         while (numberOfTries < 10) {
             System.out.print("Entrez votre devinette : ");
-            int userGuess = scanner.nextInt();
-            numberOfTries++;
+            int Unbr = scanner.nextInt();
+            nbrE++;
 
-            if (userGuess < numberToGuess) {
+            if (Unbr < nbrD) {
                 System.out.println("Le nombre est plus grand.");
-            } else if (userGuess > numberToGuess) {
+            } else if (Unbr > nbrD) {
                 System.out.println("Le nombre est plus petit.");
             } else {
-                hasGuessedCorrectly = true;
+                nbrTr = true;
                 break;
             }
         }
 
-        if (hasGuessedCorrectly) {
-            System.out.println("Félicitations ! Vous avez deviné le bon nombre en " + numberOfTries + " essais.");
+        if (nbrTr) {
+            System.out.println("Félicitations ! Vous avez deviné le bon nombre en " + nbrE + " essais.");
         } else {
-            System.out.println("Désolé, vous avez utilisé tous vos 10 essais. Le nombre était " + numberToGuess + ".");
+            System.out.println("Désolé, vous avez utilisé tous vos 10 essais. Le nombre était " + nbrD + ".");
         }
 
         scanner.close();
